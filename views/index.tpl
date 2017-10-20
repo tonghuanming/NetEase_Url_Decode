@@ -6,7 +6,7 @@
     <body>
         <section class="webdesigntuts-workshop">
             <form action="/music" method="post" name="jiexi">
-                <input type="search" placeholder="{{text}}" name="music_url" />
+                <input type="search" placeholder="Music URL" value="{{text}}" name="music_url" />
                 <button>Download</button>
             </form>
         </section>

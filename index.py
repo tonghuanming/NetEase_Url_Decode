@@ -15,7 +15,7 @@ def css(filename):
 @view('index')
 def decode_music():
     if request.method == 'GET':
-        text = 'Input Music Url'
+        text = 'Music URL'
     else:
         m_url = request.POST.get('music_url')
         text = get_url(m_url)
