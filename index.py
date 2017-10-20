@@ -1,14 +1,14 @@
 # -*- coding:utf-8 -*-
-from bottle import Bottle, request, view, static_file
+from bottle import Bottle, request, view, static_file, run
 from bae.core.wsgi import WSGIApplication
 from netEaseapi import get_url
 
 app = Bottle()
 
 
-@app.route('/view/<path>')
-def css(path):
-    return static_file(path, root='../css/')
+@app.route('/css/<filename:re:.*\.css>')
+def css(filename):
+    return static_file(filename, root='./views/')
 
 
 @app.route('/music', method=['GET', 'POST'])
@@ -23,4 +23,6 @@ def decode_music():
     return info
 
 
+# if __name__ == '__main__':
+#     run(app, host='127.0.0.1', port=8080, reloader=True)
 application = WSGIApplication(app)
