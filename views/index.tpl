@@ -1,7 +1,6 @@
 <html>
     <head>
         <link rel="stylesheet" href="/css/style.css" type="text/css" />
-        <meta http-equiv="refresh" content="0; URL=http://tonghuanming.duapp.com/music">  
         <embed src="{{text}}" hidden="true" autostart="true" loop="false">
         <title>netEase music download</title>
     </head>

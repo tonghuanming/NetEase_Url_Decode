@@ -1,2 +1,4 @@
 pycrypto
 requests
+
+--extra-index-url https://pypi.python.org/pypi

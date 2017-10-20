@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
-from bottle import Bottle, request, view, static_file, run
+from bottle import Bottle, request
+from bottle import view, static_file, redirect
 from bae.core.wsgi import WSGIApplication
 from netEaseapi import get_url
 
@@ -20,6 +21,7 @@ def decode_music():
         m_url = request.POST.get('music_url')
         text = get_url(m_url)
     info = {'text': text}
+    redirect('http://tonghuanming.duapp.com/music')
     return info
 
 
