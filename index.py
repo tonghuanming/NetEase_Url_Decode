@@ -20,8 +20,8 @@ def decode_music():
     else:
         m_url = request.POST.get('music_url')
         text = get_url(m_url)
+        redirect('http://tonghuanming.duapp.com/music')
     info = {'text': text}
-    redirect('http://tonghuanming.duapp.com/music')
     return info
 
 
