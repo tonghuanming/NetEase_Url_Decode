@@ -26,7 +26,7 @@
 	background: -o-linear-gradient(left, #151515, #444, #151515);
 	background: -ms-linear-gradient(left, #151515, #444, #151515);
 	background: linear-gradient(left, #151515, #444, #151515);
-	top: 192px;
+	top: 400px;
 }
 
 .webdesigntuts-workshop:after {
@@ -36,7 +36,7 @@
 	background: -o-linear-gradient(left, #151515, #000, #151515);	
 	background: -ms-linear-gradient(left, #151515, #000, #151515);	
 	background: linear-gradient(left, #151515, #000, #151515);	
-	top: 191px;
+	top: 399px;
 }
 
 .webdesigntuts-workshop form {
@@ -51,7 +51,7 @@
 	box-shadow: inset 0 0 0 1px #272727;
 	display: inline-block;
 	font-size: 0px;
-	margin: 200px auto 0;
+	margin: 250px auto 0;
 	padding: 20px;
 	position: relative;
 	z-index: 1;
