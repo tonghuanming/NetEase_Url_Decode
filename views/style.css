@@ -39,13 +39,6 @@
 	top: 191px;
 }
 
-.webdesigntuts-workshop p {
-	font-family: 'Cabin', helvetica, arial, sans-serif;
-	font-size: 13px;
-	font-weight: 400;
-	text-shadow: 0 -1px 0 #888;
-}
-
 .webdesigntuts-workshop form {
 	background: #111;
 	background: -webkit-linear-gradient(#1b1b1b, #111);

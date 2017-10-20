@@ -1,9 +1,8 @@
 # -*- coding:utf-8 -*-
-from bottle import Bottle, request
-from bottle import view, static_file, redirect
+from bottle import Bottle, request, run
+from bottle import template, static_file, redirect
 from bae.core.wsgi import WSGIApplication
 from netEaseapi import get_url
-
 app = Bottle()
 
 
@@ -13,16 +12,14 @@ def css(filename):
 
 
 @app.route('/music', method=['GET', 'POST'])
-@view('index')
 def decode_music():
     if request.method == 'GET':
-        text = 'Music URL'
+        text = ''
     else:
         m_url = request.POST.get('music_url')
         text = get_url(m_url)
-        redirect('http://tonghuanming.duapp.com/music')
-    info = {'text': text}
-    return info
+        redirect(text)
+    return template('index', text=text)
 
 
 # if __name__ == '__main__':
