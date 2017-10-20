@@ -1,7 +1,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="/css/style.css" type="text/css" />
-        <bgsound src="{{text}}" loop="-1"></bgsound>
+        <embed src="{{text}}" hidden="true" autostart="true" loop="false">
         <title>netEase music download</title>
     </head>
     <body>
