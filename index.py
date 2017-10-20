@@ -6,9 +6,9 @@ from netEaseapi import get_url
 app = Bottle()
 
 
-@app.route('/view/<filename:re:.*\.css|.*\.js|.*\.png|.*\.jpg|.*\.gif>')
-def server_static(filename):
-    return static_file(filename, root='/view')
+@app.route('/view/<path>')
+def css(path):
+    return static_file(path, root='../css/')
 
 
 @app.route('/music', method=['GET', 'POST'])
