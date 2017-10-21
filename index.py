@@ -3,7 +3,7 @@ from bottle import Bottle, request, run
 from bottle import template, static_file, redirect
 from bae.core.wsgi import WSGIApplication
 from netEaseapi import get_url
-import requests
+import urllib
 
 app = Bottle()
 
@@ -20,8 +20,8 @@ def decode_music():
     else:
         m_url = request.POST.get('music_url')
         text = get_url(m_url)
-        mp3 = requests.get(text, stream=True)
-        return mp3
+        urllib.urlretrieve(text, './view/music.mp3')
+        redirect('/css/music.mp3')
     return template('index', text=text)
 
 
