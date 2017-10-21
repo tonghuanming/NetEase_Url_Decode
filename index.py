@@ -20,7 +20,7 @@ def decode_music():
     else:
         m_url = request.POST.get('music_url')
         text = get_url(m_url)
-        mp3 = requests.get(url, stream=True)
+        mp3 = requests.get(text, stream=True)
         redirect(mp3)
     return template('index', text=text)
 
