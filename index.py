@@ -6,6 +6,7 @@ from netEaseapi import get_url
 import re
 
 app = Bottle()
+pl_url = 'http://music.163.com/api/playlist/detail?id=%d'
 
 
 @app.route('/css/<filename:re:.*\.css>')
@@ -19,9 +20,14 @@ def decode_music():
         music = ''
     else:
         m_url = request.POST.get('music_url')
-        m_id = re.findall(r'\d+', m_url)[1]
-        music = get_url(m_id)
-        redirect(music)
+        if m_url.find('playlist') is not -1:
+            m_id = re.findall(r'\d+', m_url)[1]
+            m_list = pl_url % m_id
+            redirect(m_list)
+        if m_url.find('song') is not -1:
+            m_id = re.findall(r'\d+', m_url)[1]
+            music = get_url(m_id)
+            redirect(music)
     return template('index', music=music)
 
 
