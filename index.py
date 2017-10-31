@@ -6,7 +6,7 @@ from netEaseapi import get_url
 import re
 
 app = Bottle()
-pl_url = 'http://music.163.com/api/playlist/detail?id=%d'
+pl_url = 'http://music.163.com/api/playlist/detail?id=%s'
 
 
 @app.route('/css/<filename:re:.*\.css>')
