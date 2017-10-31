@@ -28,7 +28,7 @@ def decode_music():
         m_id = re.findall(r'\d+', m_url)[1]
         music = get_url(m_id)
         urlretrieve(music, './music/temp.mp3')
-        redirect('/music/temp.mp3')
+        redirect('/download/temp.mp3')
     return template('index', music=music)
 
 
