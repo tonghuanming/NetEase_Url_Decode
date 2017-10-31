@@ -80,9 +80,8 @@ def encrypted_request(text):
     return data
 
 
-def get_url(text):
-    ids = text.split('=')[1]
-    param['ids'] = '[' + ids + ']'
+def get_url(m_id):
+    param['ids'] = '[' + m_id + ']'
     data = encrypted_request(param)
     html = requests.post(url, data=data).json()
     return html['data'][0]['url']
