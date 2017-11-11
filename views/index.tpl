@@ -1,6 +1,6 @@
 <html>
     <head>
-        <link rel="stylesheet" href="/css/style.css" type="text/css" />
+        <link rel="stylesheet" href="/tpl/style.css" type="text/css" />
         <title>NetEase Music Download</title>
     </head>
     <body>

@@ -9,7 +9,7 @@ app = Bottle()
 pl_url = 'http://music.163.com/api/playlist/detail?id=%s'
 
 
-@app.route('/css/<filename:re:.*\.css>')
+@app.route('/tpl/<filename:re:.*\.css|.*\.jpg>')
 def css(filename):
     return static_file(filename, root='./views/')
 

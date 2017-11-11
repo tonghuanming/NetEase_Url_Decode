@@ -1,6 +1,6 @@
 
 .webdesigntuts-workshop {
-	background:url('./view/bg.jpg') no-repeat;
+	background:url('/tpl/bg.jpg') no-repeat;
 	background-size:100%;
 	height: 100%;
 	position: fixed;
