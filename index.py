@@ -1,17 +1,25 @@
 # -*- coding:utf-8 -*-
-from bottle import Bottle, request, run
+from bottle import Bottle, request
 from bottle import template, static_file, redirect
 from bae.core.wsgi import WSGIApplication
 from netEaseapi import get_url
 import re
+import requests
 
 app = Bottle()
 pl_url = 'http://music.163.com/api/playlist/detail?id=%s'
+pixiv = 'www.pixiv.net'
 
 
 @app.route('/tpl/<filename:re:.*\.css|.*\.jpg>')
 def css(filename):
     return static_file(filename, root='./views/')
+
+
+@app.route('/p', method='GET')
+def get_pixiv():
+    html = requests.get(pixiv).text
+    return html
 
 
 @app.route('/music', method=['GET', 'POST'])
