@@ -8,7 +8,7 @@ import requests
 
 app = Bottle()
 pl_url = 'http://music.163.com/api/playlist/detail?id=%s'
-pixiv = 'www.pixiv.net'
+pixiv = 'http://www.pixiv.net'
 
 
 @app.route('/tpl/<filename:re:.*\.css|.*\.jpg>')
