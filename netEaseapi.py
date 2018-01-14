@@ -97,7 +97,6 @@ def get_info(m_id):
     soup = BeautifulSoup(html.text, 'lxml')
     imgurl = soup.select('.u-img')[0].get('src')
     mp3name = soup.select('meta')[3].get('content').split(u'，')
-    print mp3name[0]
     info = {'song': mp3name[0], 'album': mp3name[1],
             'singer': mp3name[2], 'img': imgurl, 'url': mp3url['data'][0]['url']}
     return info
