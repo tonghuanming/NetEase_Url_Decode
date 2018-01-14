@@ -28,7 +28,7 @@ def decode_music():
         if m_url.find('song') is not -1:
             m_id = re.findall(r'\d+', m_url)[1]
             music = get_info(m_id)
-            return music
+            return music.decode('utf-8').
     return template('index', music=music)
 
 

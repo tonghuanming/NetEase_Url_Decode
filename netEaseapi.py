@@ -99,4 +99,4 @@ def get_info(m_id):
     mp3name = soup.select('meta')[3].get('content').split(u'，')
     info = {'song': mp3name[0], 'album': mp3name[1],
             'singer': mp3name[2], 'img': imgurl, 'url': mp3url['data'][0]['url']}
-    return info
+    return json.dumps(info)
