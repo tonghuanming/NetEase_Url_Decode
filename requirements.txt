@@ -1,3 +1,5 @@
 pycrypto
 requests
+beautifulsoup4
+lxml
 --extra-index-url https://pypi.python.org/pypi

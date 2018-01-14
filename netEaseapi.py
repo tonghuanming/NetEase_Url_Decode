@@ -8,6 +8,7 @@ import base64
 import random
 import requests
 from Crypto.Cipher import AES
+from bs4 import BeautifulSoup
 
 
 modulu = '00e0b509f6259df8642dbc35662901477df22677ec152b5\
@@ -15,12 +16,20 @@ ff68ace615bb7b725152b3ab17a876aea8a5aa76d2e417629ec4ee341f\
 56135fccf695280104e0312ecbda92557c93870114af6c9d05c4f7f0c3\
 685b7a46bee255932575cce10b424d813cfe4875d3e82047b97ddef527\
 41d546b8e289dc6935b3ece0462db0a22b8e7'
-
-
 nonce = b'0CoJUm6Qyw8W8jud'
 pubKey = '010001'
 param = {'ids': '', 'br': 999000, 'csrf_token': ''}
-url = "http://music.163.com/weapi/song/enhance/player/url"
+
+song_api = 'http://music.163.com/weapi/song/enhance/player/url'
+song_url = 'http://music.163.com/m/song?id=%s'
+
+cdns = 'http://music.163.com/weapi/cdns'
+
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.26 Mobile Safari/537.36',
+    'Host': 'music.163.com',
+    'Referer': 'http://music.163.com/'
+}
 
 
 def aesEncrypt(text, secKey):
@@ -80,11 +89,15 @@ def encrypted_request(text):
     return data
 
 
-def get_url(m_id):
+def get_info(m_id):
     param['ids'] = '[' + m_id + ']'
     data = encrypted_request(param)
-    html = requests.post(url, data=data).json()
-    return html['data'][0]['url']
-
-
-# print get_url('http://music.163.com/#/song?id=210991')
+    mp3url = requests.post(song_api, headers=headers, data=data).json()
+    html = requests.get(song_url % m_id, headers=headers)
+    soup = BeautifulSoup(html.text, 'lxml')
+    imgurl = soup.select('.u-img')[0].get('src')
+    mp3name = soup.select('meta')[3].get('content').split(u'，')
+    print mp3name[0]
+    info = {'song': mp3name[0], 'album': mp3name[1],
+            'singer': mp3name[2], 'img': imgurl, 'url': mp3url['data'][0]['url']}
+    return info

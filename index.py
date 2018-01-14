@@ -2,24 +2,17 @@
 from bottle import Bottle, request
 from bottle import template, static_file, redirect
 from bae.core.wsgi import WSGIApplication
-from netEaseapi import get_url
+from netEaseapi import get_info
 import re
 import requests
 
 app = Bottle()
 pl_url = 'http://music.163.com/api/playlist/detail?id=%s'
-pixiv = 'http://www.pixiv.net'
 
 
 @app.route('/tpl/<filename:re:.*\.css|.*\.jpg>')
 def css(filename):
     return static_file(filename, root='./views/')
-
-
-@app.route('/p', method='GET')
-def get_pixiv():
-    html = requests.get(pixiv).text
-    return html
 
 
 @app.route('/music', method=['GET', 'POST'])
@@ -34,8 +27,8 @@ def decode_music():
             redirect(m_list)
         if m_url.find('song') is not -1:
             m_id = re.findall(r'\d+', m_url)[1]
-            music = get_url(m_id)
-            redirect(music)
+            music = get_info(m_id)
+            return music
     return template('index', music=music)
 
 
