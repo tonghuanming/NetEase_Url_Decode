@@ -13,8 +13,8 @@ headers = {
 
 
 def getplaylist():
-    lurl = listurl % random.randint(0, 3000)
-    web_data = requests.get(listurl, headers=headers)
+    lurl = listurl % random.randint(1, 3000)
+    web_data = requests.get(lurl, headers=headers)
     soup = BeautifulSoup(web_data.text, 'lxml')
     playlist = soup.select('a.msk')[0].get('href')
     return playlist
@@ -27,3 +27,6 @@ def getmusic():
     music = soup.select('#song-list-pre-cache > ul > li > a')
     musicurl = music[random.randint(0, len(music))].get('href')
     return musicurl
+
+
+print getplaylist()
