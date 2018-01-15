@@ -9,7 +9,7 @@ import random
 import requests
 from Crypto.Cipher import AES
 from bs4 import BeautifulSoup
-
+from findmusic import getmusic
 
 modulu = '00e0b509f6259df8642dbc35662901477df22677ec152b5\
 ff68ace615bb7b725152b3ab17a876aea8a5aa76d2e417629ec4ee341f\
@@ -99,8 +99,5 @@ def get_info(m_id):
     mp3name = soup.select('meta')[3].get('content').split(u'，')
     bgimgurl = soup.select('.m-song-bg')[0].get('style')
     info = {'title': mp3name[0], 'epname': mp3name[1],
-            'singer': mp3name[2], 'imgurl': imgurl, 'mp3url': mp3url['data'][0]['url'], 'bgimgurl': bgimgurl}
+            'singer': mp3name[2], 'imgurl': imgurl, 'mp3url': mp3url['data'][0]['url'], 'bgimgurl': bgimgurl, 'randomid': getmusic()}
     return json.dumps(info)
-
-
-print get_info('27562951')
