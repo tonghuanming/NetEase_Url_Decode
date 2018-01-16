@@ -3,6 +3,7 @@ from bottle import Bottle, request
 from bottle import template, static_file, redirect
 from bae.core.wsgi import WSGIApplication
 from netEaseapi import get_info
+from findmusic import getmusic
 import re
 import requests
 
@@ -13,6 +14,11 @@ pl_url = 'http://music.163.com/api/playlist/detail?id=%s'
 @app.route('/tpl/<filename:re:.*\.css|.*\.jpg>')
 def css(filename):
     return static_file(filename, root='./views/')
+
+
+@app.route('/nextmusic')
+def next_music():
+    return getmusic()
 
 
 @app.route('/music', method=['GET', 'POST'])
